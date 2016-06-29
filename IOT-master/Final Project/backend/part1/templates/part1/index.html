@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Waypoints in directions</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+        float: left;
+        width: 70%;
+        height: 100%;
+      }
+      #directions-panel {
+        height: 65%;
+        overflow: scroll;
+      }
+      #right-panel {
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+      #right-panel select, #right-panel input {
+        font-size: 15px;
+      }
+
+      #right-panel select {
+        width: 100%;
+      }
+
+      #right-panel i {
+        font-size: 12px;
+      }
+
+      #right-panel {
+        margin: 20px;
+        border-width: 2px;
+        width: 20%;
+        height: 100%;
+        float: left;
+        text-align: left;
+        padding-top: 20px;
+        
+      }
+      #directions-panel {
+        margin-top: 20px;
+        background-color: #FFEE77;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="right-panel">
+    <div>
+    <b>Trash Level:</b> <br>
+    
+    <select multiple id="levels">
+      <option value="red">Red</option>
+      <option value="yellow">Yellow</option>
+      <option value="green">Green</option>
+    </select>
+    <br>
+    <input type="button" id="remove" value="Clear" onclick="removeMarker();"/>
+    <input type="submit" id="submit">
+    <br>
+      
+    </div>
+    <div id="directions-panel"></div>
+    </div>
+
+    <script>
+    var map;
+    var directionsDisplay;
+    var directionsService;
+    var flightPath;
+    var markers = [];
+function initMap() {
+  directionsService = new google.maps.DirectionsService;
+  directionsDisplay = new google.maps.DirectionsRenderer;
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 16,
+    center: {lat: 40.707240, lng: -74.012149}
+  });
+  directionsDisplay.setMap(map);
+
+  var marker = new google.maps.Marker({
+      icon: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+      position: {lat: 40.707240, lng: -74.012149},
+      map: map,
+      
+    });
+  marker.setMap(map);
+  document.getElementById('submit').addEventListener('click', function() {
+    var checkboxArray = document.getElementById('levels');
+    var colors = [];
+    for (var i = 0; i < checkboxArray.length; i++) {
+      if (checkboxArray.options[i].selected) {
+        colors.push({
+          location: checkboxArray[i].value,
+          stopover: true
+        });
+      }
+    }
+    console.log(colors);
+    console.log(colors[0]['location']);
+
+    var url = '/part1/?route=';
+    // var color_location = [];
+    for (var i = 0; i < colors.length; i++) {
+      url += colors[i]['location'];
+    }
+    // url += color_location.join('_');
+    console.log(url);
+    httpGetAsync(url , calculateAndDisplayRoute);
+  });
+
+  document.getElementById('levels').addEventListener("change", function() {
+    // alert(this.responseText);
+    var url = '/part1/?color=' + this.value;
+    httpGetAsync(url, showTrash); 
+  });
+}
+
+
+
+function removeMarker() {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  }
+  flightPath.setMap(null)
+}
+function showTrash(response) {
+  // alert("show trash");
+  trashList = JSON.parse(response)['trashList'];
+  // alert("show trash2");
+  // console.log(trashList[0]["location"]);
+  for (var i = 0; i < trashList.length; i ++) {
+    var trash = trashList[i];
+    var iconUrl = 'http://maps.google.com/mapfiles/ms/icons/'+trashList[i]['trashLevel'].toLowerCase()+'-dot.png';
+    var location = {};
+    location['lat'] = parseFloat(trashList[i]["location"]["lat"]);
+    location['lng'] = parseFloat(trashList[i]["location"]["lng"]);
+    // alert("show trash3");
+    // if (i == 0) {
+    //   iconUrl = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+    // }
+    var marker = new google.maps.Marker({
+      icon: iconUrl,
+      position: location,
+      map: map,
+      text: trashList[i]["id"],
+      title: "tweet_content"
+    });
+    var infowindow = null;
+    marker.addListener('click', function() {
+      if (infowindow){
+        infowindow.setMap(null);
+      }
+      var contentString = '<div id="content">'+
+        '<div id="siteNotice">'+
+        '</div>'+
+          '<div id="bodyContent">'+ 
+            '<div>Trash Level: ' + trash["trashLevel"] + '</div>'+
+            '<div>Trash ID: ' + trash["id"] + '</div>'+
+            '<div>AQI:' + trash["aqi"] + '</div>'+
+            '<div>' + trash["airDescription"] + '</div>'+
+          '</div>'+
+        '</div>';
+      
+      infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        maxWidth: 200
+      });
+        infowindow.open(map, this);
+    }); 
+    markers.push(marker);    
+    marker.setMap(map);
+  // alert("show trash4"); 
+  }
+}
+
+
+// function calculateAndDisplayRoute(response) {
+//   console.log(response);
+//   var list = JSON.parse(response)['list'];
+//   console.log(list.length);
+//   var index = 0;
+//   while(index < list.length) {
+//     var waypts = [];
+//     var start = index;
+//     var end = index;
+//     for (var i = index + 1; i < index + 7; i ++) {
+//       if (i >= list.length) {
+//         break;
+//       }
+//       waypts.push({
+//         location: list[i]["start_location"]['lat'] + "," + list[i]["start_location"]['lng'],
+//         stopover: true
+//       });
+//       end = i;
+//     }
+//     directionsDisplay.setMap(map);
+//     //console.log(waypts.length);
+//     directionsService.route({
+//       origin: list[start]["start_location"]['lat'] + "," + list[start]["start_location"]['lng'],
+//       destination: list[end]["start_location"]['lat'] + "," + list[end]["start_location"]['lng'],
+//       waypoints: waypts,
+//       optimizeWaypoints: false,
+//       travelMode: google.maps.TravelMode.DRIVING
+//     }, function(response, status) {
+//       if (status === google.maps.DirectionsStatus.OK) {
+//         directionsDisplay.setDirections(response);
+//         var route = response.routes[0];
+//         var summaryPanel = document.getElementById('directions-panel');
+//         summaryPanel.innerHTML = '';
+//         // For each route, display summary information.
+//         for (var i = 0; i < route.legs.length; i++) {
+//           var routeSegment = i + 1;
+//           summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +'</b><br>';
+//           summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+//           summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+//           summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+//         }
+//       } else {
+//         window.alert('Directions request failed due to ' + status);
+//       }
+//     });
+//     index += 7;
+//   }
+// }
+
+
+function calculateAndDisplayRoute(response) {
+    //var directionsDisplay = new google.maps.DirectionsRenderer;
+    //console.log(response);
+    var responseJson = JSON.parse(response);
+    //directionsDisplay.setDirections(responseJson);
+    console.log(responseJson);
+    var route = responseJson.routes[0];
+
+    var summaryPanel = document.getElementById('directions-panel');
+    summaryPanel.innerHTML = '<b>Total duration: ' + route.legs[0].duration['text'] + '</b><br><br>';
+    // For each route, display summary information.
+    for (var i = 0; i < route.legs[0].steps.length; i++) {
+      var routeSegment = i + 1;
+      summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +'</b><br>';
+      summaryPanel.innerHTML += ' Duration: ' + route.legs[0].steps[i].duration['text'] + '<br>';
+      summaryPanel.innerHTML += route.legs[0].steps[i].html_instructions + '<br><br>';
+    }
+
+    var steps = route.legs[0].steps;
+    var locations = [];
+    locations.push(route.legs[0]['start_location']);
+    for (var i = 0; i < steps.length; i++) {
+      locations.push(steps[i]["end_location"]);
+    }
+
+
+    if(flightPath != null) {
+      flightPath.setMap(null);
+    }
+    var i,j,temparray,chunk = 15;
+    for (i=0,j=locations.length; i<j; i+=chunk) {
+        temparray = locations.slice(i,i+chunk);
+        // do whatever
+    }
+
+    
+    var lineSymbol = {
+      path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+    };
+      
+    flightPath = new google.maps.Polyline({
+      path: locations,
+      icons: [{
+        icon: lineSymbol,
+        offset: '100%'
+      }],
+      map: map,
+      geodesic: true,
+      strokeColor: '#FF0000',
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+    });
+    flightPath.setMap(map);
+  };
+
+
+
+
+function httpGetAsync(theUrl, callback) {
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.onreadystatechange = function() { 
+    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+      callback(xmlHttp.responseText);
+  }
+  xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+  xmlHttp.send(null);
+}
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvnCt9rVwprcODqeGNoSSyJxbdp9_v69U&signed_in=true&callback=initMap"
+        async defer></script>
+    
+  </body>
+</html>

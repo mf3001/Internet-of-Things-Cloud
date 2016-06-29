@@ -1,0 +1,25 @@
+"SerialNumber",Station,Waste Stream,Description,FullnessLevel,FullnessAge,CollectedLevel,LastCollectedAge,Group,Alerts
+1401728,yes,Trash,N/E/C Water St. & Broad St,Yellow,2.0 hours,Yellow,1.4 days,"z- July 4 Lock Down, z- LOCKED FOR MARATHON., z- #1 LOCK DOWN PRESIDENT, Rt-2",0
+1401732-R,yes,Paper,S/W/C Broadway & Vesey St,Yellow,3.1 hours,Green,57.8 days,Rt11,0
+2403817,yes,Trash,S/E/C Church St & Barclays St.,Yellow,17.3 minutes,Yellow,1.4 days,"Rt10, 911 LOCKDOWN., z- Five Borough Bike Tour",0
+2403819-R,yes,Bottles/Cans,S/W/C Water & Fulton .,Yellow,3.6 hours,Green,3.6 hours,"z- July 4 Lock Down, Rt14",0
+2403835,yes,Trash,S/W/C Murray St & Broadway,Yellow,1.1 hours,Yellow,2.1 days,Rt11,0
+2403913-L,yes,Bottles/Cans,S/W/C Broadway & Liberty St.,Yellow,12.5 minutes,Green,12.5 minutes,"Rt-6, 911 LOCKDOWN.",0
+2403916-L,yes,Paper,S/W/C State St & Broadway,Yellow,1.4 hours,Yellow,3.4 days,"z-#2 LOCK DOWN PRESIDENT, Rt-3, z- Five Borough Bike Tour",0
+2403927-R,yes,Bottles/Cans,S/E/C Broadway & Morris,Yellow,2.4 hours,Green,3.0 days,Rt-3,0
+2403968,yes,Trash,S/W/C Greenwich St & Morris St,Yellow,44.5 minutes,Yellow,3.0 days,Rt-7,0
+2403969,yes,Trash,N/W/C Battery Pl & Washington St,Red,32.8 minutes,Yellow,2.0 days,"Rt-7, z-#2 LOCK DOWN PRESIDENT",0
+2403971,yes,Trash,N/E/C West St & Rector St,Yellow,51.8 minutes,Yellow,2.4 days,"Rt-7, z-#2 LOCK DOWN PRESIDENT, 911 LOCKDOWN.",0
+2403972-R,yes,Bottles/Cans,N/W/C Greenwich St & Rector St,Yellow,2.1 hours,Yellow,2.4 days,"Rt-7, 911 LOCKDOWN., z- Five Borough Bike Tour",0
+2403974,yes,Trash,N/E/C Trinity Pl & Morris St,Yellow,3.5 hours,Yellow,6.3 days,"Rt-7, z- Five Borough Bike Tour",0
+2403989,yes,Trash,N/W/C John St & Pearl St,Yellow,1.4 hours,Yellow,2.0 days,Rt13,0
+2404001,yes,Trash,N/E/C State St & Pearl St,Yellow,1.6 hours,Yellow,4.0 days,"z-#2 LOCK DOWN PRESIDENT, Rt-3, z- Five Borough Bike Tour",0
+2404029,yes,Trash,S/E/C Gold St & Platt St,Yellow,24.8 minutes,Red,2.0 days,Rt12,0
+2404032-R,yes,Paper,N/W/C Water St & Maiden La,Yellow,3.4 hours,Green,3.4 hours,"z- July 4 Lock Down, Rt16, z- LOCKED FOR MARATHON., z - WiFi Audit - Bigbelly",0
+2404080,yes,Trash,S/W/C Wall St & Hanover St,Yellow,1.0 hours,Yellow,1.1 days,Rt-5,0
+2404182,yes,Trash,Coenties Alley - Stone,Red,15.5 minutes,Green,2.0 hours,"z - WiFi Audit - Bigbelly, Rt-2",0
+2404189,yes,Trash,S/E/C Water & Coenties Sl,Yellow,1.0 hours,Yellow,2.0 days,"z- July 4 Lock Down, z- LOCKED FOR MARATHON., z- #1 LOCK DOWN PRESIDENT, Rt-2",0
+2404191,yes,Trash,S/W/C Water St & Coenties Sl,Yellow,19.0 minutes,Red,1.9 hours,"z- July 4 Lock Down, z- LOCKED FOR MARATHON., z- #1 LOCK DOWN PRESIDENT, Rt-2",0
+2404246,yes,Trash,S/W/C Broadway & Morris St,Yellow,58.5 minutes,Yellow,1.2 days,Rt-6,0
+2404252-R,yes,Bottles/Cans,S/W/C Wall St & Front St,Yellow,2.1 days,Yellow,3.1 days,"z- July 4 Lock Down, Lock Down, z- LOCKED FOR MARATHON., z- #1 LOCK DOWN PRESIDENT, Rt-1",0
+2404263,yes,Trash,S/E/C Broad St & Beaver St,Yellow,4.6 hours,Yellow,1.3 days,"Rt-4, z - WiFi Audit - Bigbelly",0

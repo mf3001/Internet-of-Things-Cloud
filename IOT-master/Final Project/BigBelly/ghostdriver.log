@@ -1,0 +1,26 @@
+[INFO  - 2016-04-23T23:07:06.913Z] GhostDriver - Main - running on port 50582
+[INFO  - 2016-04-23T23:07:07.536Z] Session [19ea25b0-09a8-11e6-98d5-0d9931b5519e] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2016-04-23T23:07:07.536Z] Session [19ea25b0-09a8-11e6-98d5-0d9931b5519e] - page.customHeaders:  - {}
+[INFO  - 2016-04-23T23:07:07.536Z] Session [19ea25b0-09a8-11e6-98d5-0d9931b5519e] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-10.10 (Yosemite)-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2016-04-23T23:07:07.537Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 19ea25b0-09a8-11e6-98d5-0d9931b5519e
+[ERROR - 2016-04-23T23:07:10.159Z] Session [19ea25b0-09a8-11e6-98d5-0d9931b5519e] - page.onError - msg: TypeError: undefined is not an object (evaluating 'text.charAt')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-04-23T23:07:10.159Z] Session [19ea25b0-09a8-11e6-98d5-0d9931b5519e] - page.onError - stack:
+  handleAjaxFailure (https://clean.bigbelly.com/:386)
+  handleTransactionResponse (https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/connection/connection-min.js:7)
+  (anonymous function) (https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/connection/connection-min.js:7)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-04-23T23:07:10.160Z] Session [19ea25b0-09a8-11e6-98d5-0d9931b5519e] - page.onError - msg: TypeError: undefined is not an object (evaluating 'text.charAt')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-04-23T23:07:10.160Z] Session [19ea25b0-09a8-11e6-98d5-0d9931b5519e] - page.onError - stack:
+  handleAjaxFailure (https://clean.bigbelly.com/:386)
+  handleTransactionResponse (https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/connection/connection-min.js:7)
+  (anonymous function) (https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/connection/connection-min.js:7)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-04-23T23:07:34.287Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1461452854285
+
+  phantomjs://platform/console++.js:263 in error

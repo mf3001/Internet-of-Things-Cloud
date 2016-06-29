@@ -1,0 +1,38 @@
+{
+  "excludedAttributeNames": [], 
+  "version": "1.0", 
+  "dataFormat": "CSV", 
+  "rowId": null, 
+  "dataFileContainsHeader": true, 
+  "attributes": [
+    {
+      "attributeName": "starttime", 
+      "attributeType": "NUMERIC"
+    },
+    {
+      "attributeName": "day", 
+      "attributeType": "NUMERIC"
+    },
+    {
+      "attributeName": "level", 
+      "attributeType": "NUMERIC"
+    },
+    {
+      "attributeName": "time1at96", 
+      "attributeType": "NUMERIC"
+    },
+    {
+      "attributeName": "travelTimeLocal", 
+      "attributeType": "NUMERIC"
+    },
+    {
+      "attributeName": "travelTimeExpress", 
+      "attributeType": "NUMERIC"
+    },
+    {
+      "attributeName": "switch", 
+      "attributeType": "BINARY"
+    }
+  ], 
+  "targetAttributeName": "switch"
+}

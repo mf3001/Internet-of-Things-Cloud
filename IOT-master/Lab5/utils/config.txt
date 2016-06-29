@@ -1,0 +1,3 @@
+877012697242
+us-east-1:9a28db93-51d2-40f6-a768-e487d610d5a8
+arn:aws:iam::877012697242:role/Cognito_IOTUnauth_Role

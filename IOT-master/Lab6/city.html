@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p><b>Choose two Cities and Get the Route!</b></p>
+<form id='form1' method='post' action="route.php">
+Source:<select name="source">
+	<option value="city1">New York</option>
+	<option value="city2">Boston</option>
+	<option value="city3">Washington</option>
+	<option value="city4">Philadelphia</option>
+</select>
+</form>
+<form id='form2' method='post' action="route.php">
+Destination:<select name="destination">
+	<option value="city1">New York</option>
+	<option value="city2">Boston</option>
+	<option value="city3">Washington</option>
+	<option value="city4">Philadelphia</option>
+<input type="button" value="Plan the Route!" onclick="submitForms()" />
+</select>
+</form>
+<script>
+submitForms = function(){
+    document.getElementById("form1").submit();
+    document.getElementById("form2").submit();
+}
+</script>
+</body>
+</html>
+
